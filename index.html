@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ivan Kanev | Portfolio CV</title>
+  <style>
+    :root{
+      --bg:#0a1020;
+      --bg-soft:#101935;
+      --panel:#121d3b;
+      --panel-2:#0f1730;
+      --line:rgba(255,255,255,.10);
+      --text:#f5f7ff;
+      --muted:#b4bfdc;
+      --accent:#4a74d4;
+      --accent-2:#8fb0ff;
+      --shadow:0 25px 70px rgba(0,0,0,.32);
+      --radius-xl:32px;
+      --radius-lg:24px;
+      --radius-md:18px;
+      --max:1260px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,Segoe UI,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1100px 500px at 0% 0%, rgba(74,116,212,.28), transparent 55%),
+        radial-gradient(800px 420px at 100% 10%, rgba(143,176,255,.18), transparent 48%),
+        linear-gradient(180deg, #0c1430 0%, #0a1020 100%);
+      min-height:100vh;
+    }
+
+    a{color:inherit}
+
+    .shell{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:28px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      padding:18px 22px;
+      border:1px solid var(--line);
+      background:rgba(10,16,32,.55);
+      backdrop-filter:blur(16px);
+      border-radius:22px;
+      position:sticky;
+      top:18px;
+      z-index:20;
+      box-shadow:var(--shadow);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:white;
+      box-shadow:0 12px 30px rgba(74,116,212,.35);
+    }
+
+    .brand h1{
+      margin:0;
+      font-size:17px;
+      line-height:1.15;
+      letter-spacing:.03em;
+    }
+
+    .brand p{
+      margin:3px 0 0;
+      color:var(--muted);
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .nav a{
+      text-decoration:none;
+      color:var(--muted);
+      padding:10px 14px;
+      border-radius:14px;
+      background:rgba(255,255,255,.03);
+      border:1px solid transparent;
+      transition:.25s ease;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .nav a:hover{
+      color:var(--text);
+      border-color:var(--line);
+      background:rgba(255,255,255,.06);
+      transform:translateY(-1px);
+    }
+
+    .hero{
+      margin-top:24px;
+      display:grid;
+      grid-template-columns:380px 1fr;
+      gap:24px;
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(18,29,59,.96), rgba(13,22,46,.96));
+      border:1px solid var(--line);
+      border-radius:var(--radius-xl);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .profile-card{
+      padding:26px;
+      position:relative;
+    }
+
+    .profile-card::before{
+      content:"";
+      position:absolute;
+      inset:0 0 auto 0;
+      height:180px;
+      background:linear-gradient(135deg, rgba(74,116,212,.95), rgba(74,116,212,.55));
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .ring{
+      position:absolute;
+      top:28px;
+      left:26px;
+      width:74px;
+      height:74px;
+      border-radius:50%;
+      border:2px solid rgba(255,255,255,.68);
+      opacity:.7;
+      box-shadow:0 0 0 9px rgba(255,255,255,.08), 0 0 0 18px rgba(255,255,255,.04);
+    }
+
+    .photo-wrap{
+      position:relative;
+      z-index:1;
+      margin:72px auto 22px;
+      width:238px;
+      border-radius:26px;
+      overflow:hidden;
+      box-shadow:0 22px 55px rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.12);
+      background:#fff;
+    }
+
+    .photo-wrap img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .sidebar-block{
+      padding-top:20px;
+      border-top:1px solid rgba(255,255,255,.12);
+      margin-top:20px;
+    }
+
+    .sidebar-block:first-of-type{
+      margin-top:0;
+    }
+
+    .sidebar-title{
+      margin:0 0 10px;
+      font-size:14px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:white;
+    }
+
+    .sidebar-text,
+    .sidebar-list li{
+      color:var(--muted);
+      line-height:1.6;
+      font-size:14px;
+    }
+
+    .sidebar-list{
+      padding-left:18px;
+      margin:0;
+    }
+
+    .main-card{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .headline{
+      padding:34px 36px 26px;
+      background:linear-gradient(135deg, #2c57b3 0%, #335fc1 60%, #3d6ed5 100%);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .eyebrow{
+      font-size:14px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.84);
+      margin-bottom:8px;
+    }
+
+    .headline h2{
+      margin:0;
+      font-size:clamp(42px, 7vw, 82px);
+      line-height:.92;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+
+    .content{
+      padding:28px 36px 34px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+    }
+
+    .section{
+      padding-top:6px;
+    }
+
+    .section + .section{
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top:24px;
+    }
+
+    .section-title{
+      margin:0 0 14px;
+      font-size:15px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:white;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px 22px;
+      margin-bottom:14px;
+    }
+
+    .contact-item{
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    .contact-item strong{
+      display:block;
+      color:white;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      margin-bottom:4px;
+    }
+
+    .summary{
+      color:var(--muted);
+      line-height:1.75;
+      font-size:15px;
+    }
+
+    .timeline{
+      display:grid;
+      gap:16px;
+    }
+
+    .entry{
+      padding:18px 20px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:22px;
+      background:rgba(255,255,255,.03);
+    }
+
+    .entry-head{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:flex-start;
+      margin-bottom:8px;
+    }
+
+    .entry h3{
+      margin:0;
+      font-size:19px;
+    }
+
+    .entry .company{
+      margin-top:4px;
+      color:var(--accent-2);
+      font-size:15px;
+    }
+
+    .entry .date{
+      white-space:nowrap;
+      color:#d9e4ff;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .entry ul{
+      margin:10px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:14px;
+    }
+
+    .expertise{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .tag-box{
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);
+      border-radius:18px;
+      padding:14px 16px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .education-item{
+      padding:16px 18px;
+      border-left:3px solid var(--accent);
+      background:rgba(255,255,255,.03);
+      border-radius:0 18px 18px 0;
+      margin-bottom:14px;
+    }
+
+    .education-item h3{
+      margin:0 0 4px;
+      font-size:18px;
+    }
+
+    .education-item p,
+    .education-item ul{
+      margin:0;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:14px;
+    }
+
+    .education-item ul{
+      padding-left:18px;
+      margin-top:8px;
+    }
+
+    .footer-note{
+      margin-top:20px;
+      text-align:center;
+      color:rgba(255,255,255,.62);
+      font-size:13px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    @media (max-width: 1100px){
+      .hero{grid-template-columns:1fr}
+      .photo-wrap{margin-left:0;margin-right:0}
+    }
+
+    @media (max-width: 760px){
+      .shell{padding:16px}
+      .topbar{position:static}
+      .headline,.content,.profile-card{padding-left:22px;padding-right:22px}
+      .headline h2{font-size:48px}
+      .contact-grid,.expertise{grid-template-columns:1fr}
+      .entry-head{flex-direction:column}
+      .nav{display:none}
+      .photo-wrap{width:210px}
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">IK</div>
+        <div>
+          <h1>Ivan Kanev</h1>
+          <p>Senior Silicon Validation & Design Enablement Engineer</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#contact">Contact</a>
+        <a href="#experience">Experience</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#education">Education</a>
+      </nav>
+    </header>
+
+    <main class="hero">
+      <aside class="card profile-card">
+        <div class="ring"></div>
+        <div class="photo-wrap">
+          <img src="Me.JPG" alt="Ivan Kanev portrait" />
+        </div>
+
+        <section class="sidebar-block">
+          <h3 class="sidebar-title">Personal Profile</h3>
+          <p class="sidebar-text">
+            Strong background in IC design with focus on electrical test structures,
+            silicon validation, data analysis, process interaction, and layout-related design enablement.
+          </p>
+        </section>
+
+        <section class="sidebar-block">
+          <h3 class="sidebar-title">Core Strengths</h3>
+          <ul class="sidebar-list">
+            <li>DOE electrical test structures and macro design</li>
+            <li>Silicon validation and data analysis</li>
+            <li>Failure modes and effects analysis</li>
+            <li>IC layout design and verification flow understanding</li>
+            <li>Cross-functional technical communication</li>
+            <li>Python, R, SKILL, Jira, Git, SVN</li>
+          </ul>
+        </section>
+
+        <section class="sidebar-block">
+          <h3 class="sidebar-title">Other Skills</h3>
+          <ul class="sidebar-list">
+            <li>Results driven and highly detail oriented</li>
+            <li>Strong problem solving mindset</li>
+            <li>Teamwork, ownership, mentoring, coaching</li>
+            <li>Agile and Scrum collaboration style</li>
+          </ul>
+        </section>
+      </aside>
+
+      <section class="card main-card">
+        <div class="headline">
+          <div class="eyebrow">Senior Silicon Validation Technical Assurance Engineer</div>
+          <h2>Ivan<br/>Kanev</h2>
+        </div>
+
+        <div class="content">
+          <section class="section" id="contact">
+            <h3 class="section-title">Get in Contact</h3>
+            <div class="contact-grid">
+              <div class="contact-item">
+                <strong>Mobile</strong>
+                +359 888 568 681
+              </div>
+              <div class="contact-item">
+                <strong>Email</strong>
+                <a href="mailto:ikanev@icloud.com">ikanev@icloud.com</a>
+              </div>
+              <div class="contact-item">
+                <strong>LinkedIn</strong>
+                <a href="https://www.linkedin.com/in/ivan-kanev-332323131/" target="_blank">linkedin.com/in/ivan-kanev-332323131/</a>
+              </div>
+              <div class="contact-item">
+                <strong>ResearchGate</strong>
+                <a href="https://www.researchgate.net/profile/Ivan-Kanev" target="_blank">researchgate.net/profile/Ivan-Kanev</a>
+              </div>
+            </div>
+            <div class="summary">
+              Bulgaria, Sofia, 1700, Vitosha, str. Bratia Chakrin 5
+            </div>
+          </section>
+
+          <section class="section" id="experience">
+            <h3 class="section-title">Work Experience</h3>
+            <div class="timeline">
+              <article class="entry">
+                <div class="entry-head">
+                  <div>
+                    <h3>Principal Silicon Validation and Design Enablement Engineer</h3>
+                    <div class="company">GlobalFoundries ltd.</div>
+                  </div>
+                  <div class="date">2021 – Present</div>
+                </div>
+                <ul>
+                  <li>Work with Technology Enablement, Design Rule Development, Process Integration and Yield Engineering teams to validate technology design rules and systematic design–process interaction driven fail modes.</li>
+                  <li>Define and design experimental electrical DOE test structures to assess design and process weak points and ensure design rule, PDK and process flow robustness.</li>
+                  <li>Perform detailed silicon validation analysis during process bring-up at the manufacturing facility and investigate systematic yield and performance detractors.</li>
+                  <li>Compile silicon validation reports and communicate analysis results to design and process development engineering teams.</li>
+                  <li>Drive validation of critical process and design fail modes to support manufacturability and customer satisfaction.</li>
+                </ul>
+              </article>
+
+              <article class="entry">
+                <div class="entry-head">
+                  <div>
+                    <h3>Analog IC Layout Design Engineer</h3>
+                    <div class="company">Melexis Bulgaria ltd.</div>
+                  </div>
+                  <div class="date">2017 – 2021</div>
+                </div>
+                <ul>
+                  <li>Transferred hierarchical schematics into IC layout and executed full physical implementation flow.</li>
+                  <li>Performed more than 20 schematic-to-layout and technology compliance checks including LVS and DRC.</li>
+                  <li>Created floorplans for cell, block, full-chip layout implementation and fit assembly constraints.</li>
+                  <li>Prepared tapeout documents for full-chip layout implementation according to company process flow.</li>
+                </ul>
+              </article>
+
+              <article class="entry">
+                <div class="entry-head">
+                  <div>
+                    <h3>R&amp;D Biomedical Engineer</h3>
+                    <div class="company">eSenseLab ltd.</div>
+                  </div>
+                  <div class="date">2016 – 2017</div>
+                </div>
+                <ul>
+                  <li>Responsible for PCB layout and software testing of biomedical devices such as ECG holters, automatic defibrillators, sleep trackers, sleep apnea monitors and patient motion monitoring systems.</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <section class="section" id="expertise">
+            <h3 class="section-title">Areas of Expertise</h3>
+            <div class="expertise">
+              <div class="tag-box">DOE electrical test structures (SLM’s macro design)</div>
+              <div class="tag-box">Silicon validation and data analysis</div>
+              <div class="tag-box">Failure Modes and Effects Analysis (FMEA)</div>
+              <div class="tag-box">Cell, block and chip layout design</div>
+              <div class="tag-box">Advanced node exposure: FD-SOI, FinFET, silicon photonics, BCD, HV SOI CMOS, ISOCMOS</div>
+              <div class="tag-box">Cadence Virtuoso Schematic Editor and Virtuoso Layout Suite</div>
+              <div class="tag-box">Verification tools and flows: DRC, LVS, Latch-up, ERC, BPC, mask difference, antenna checks</div>
+              <div class="tag-box">ESD, EMC, RF, MEMS and Hall-related design context</div>
+              <div class="tag-box">Programming with Python, R and SKILL</div>
+              <div class="tag-box">Tracking workflows with Jira, Git, DesSync, SVN and CVS</div>
+            </div>
+          </section>
+
+          <section class="section" id="education">
+            <h3 class="section-title">Education History</h3>
+
+            <div class="education-item">
+              <h3>Technical University of Sofia</h3>
+              <p>Ph.D. | 2018 – 2023</p>
+              <ul>
+                <li>Profile: Medical Devices</li>
+                <li>Thesis topic: synthesis and research of new methods and algorithms for sound transformation (sonification) of electrocardiographic signals in emergency patient telemetry regarding cardiovascular diseases</li>
+                <li>Key competencies: HW, SW design, algorithm development, cardiology</li>
+              </ul>
+            </div>
+
+            <div class="education-item">
+              <h3>Technical University of Sofia</h3>
+              <p>Master’s degree in Electronics | 2016 – 2018</p>
+              <ul>
+                <li>Profile: Biomedical Engineering</li>
+              </ul>
+            </div>
+
+            <div class="education-item">
+              <h3>Technical University of Sofia</h3>
+              <p>Bachelor’s degree in Electronics | 2012 – 2016</p>
+              <ul>
+                <li>Profile: Biomedical Engineering</li>
+              </ul>
+            </div>
+
+            <div class="education-item">
+              <h3>Professional High School of Electronics John Atanasov</h3>
+              <p>PQ according to state educational requirements / SER / | 2008 – 2012</p>
+              <ul>
+                <li>Third level of professional qualification “Technician of electronic equipment” with “Microprocessors” profile</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <div class="footer-note">One-page modern CV portfolio • Ivan Kanev</div>
+  </div>
+</body>
+</html>
