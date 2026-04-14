@@ -341,7 +341,7 @@
 
     .photo-frame{
       position:relative;
-      aspect-ratio: 3 / 4;
+      aspect-ratio:3 / 4;
       min-height:0;
       border-radius:28px;
       overflow:hidden;
@@ -892,6 +892,239 @@
       scroll-margin-top:110px;
     }
 
+    #pdfExportRoot{
+      position:fixed;
+      left:-99999px;
+      top:0;
+      width:210mm;
+      background:#fff;
+      color:#111827;
+      z-index:-1;
+      opacity:0;
+      pointer-events:none;
+    }
+
+    .pdf-sheet{
+      width:210mm;
+      min-height:297mm;
+      padding:16mm;
+      background:#fff;
+      color:#111827;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    .pdf-header{
+      display:grid;
+      grid-template-columns:42mm 1fr;
+      gap:10mm;
+      align-items:start;
+      border-bottom:1px solid #dbe3f0;
+      padding-bottom:8mm;
+      margin-bottom:8mm;
+    }
+
+    .pdf-photo{
+      width:42mm;
+      height:52mm;
+      border:1px solid #dbe3f0;
+      border-radius:4mm;
+      overflow:hidden;
+      background:#f8fafc;
+    }
+
+    .pdf-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .pdf-name{
+      font-size:24pt;
+      font-weight:800;
+      line-height:1.02;
+      letter-spacing:-.5px;
+      color:#0f172a;
+      margin:0 0 3mm;
+    }
+
+    .pdf-role{
+      font-size:12.5pt;
+      line-height:1.35;
+      color:#334155;
+      font-weight:700;
+      margin-bottom:5mm;
+    }
+
+    .pdf-summary{
+      font-size:10.5pt;
+      line-height:1.65;
+      color:#334155;
+      margin:0;
+    }
+
+    .pdf-contact-row{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:4mm;
+      margin-top:6mm;
+    }
+
+    .pdf-contact-item{
+      border:1px solid #dbe3f0;
+      border-radius:4mm;
+      padding:3.5mm 4mm;
+      min-width:0;
+    }
+
+    .pdf-contact-label{
+      font-size:8pt;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      color:#64748b;
+      margin-bottom:2mm;
+      font-weight:700;
+    }
+
+    .pdf-contact-value{
+      font-size:9.5pt;
+      line-height:1.55;
+      color:#1f2937;
+      overflow-wrap:anywhere;
+      word-break:break-word;
+    }
+
+    .pdf-stats{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:4mm;
+      margin-top:6mm;
+    }
+
+    .pdf-stat{
+      border:1px solid #dbe3f0;
+      border-radius:4mm;
+      padding:4mm;
+    }
+
+    .pdf-stat-number{
+      font-size:16pt;
+      font-weight:800;
+      color:#0f172a;
+      margin-bottom:2mm;
+    }
+
+    .pdf-stat-label{
+      font-size:9pt;
+      line-height:1.5;
+      color:#475569;
+    }
+
+    .pdf-main{
+      margin-top:8mm;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:7mm;
+    }
+
+    .pdf-section{
+      border:1px solid #dbe3f0;
+      border-radius:5mm;
+      padding:5mm;
+      page-break-inside:avoid;
+      break-inside:avoid;
+    }
+
+    .pdf-section-title{
+      margin:0 0 4mm;
+      font-size:15pt;
+      line-height:1.2;
+      color:#0f172a;
+      font-weight:800;
+    }
+
+    .pdf-paragraph{
+      margin:0;
+      font-size:10.3pt;
+      line-height:1.7;
+      color:#334155;
+    }
+
+    .pdf-chip-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:2.5mm;
+    }
+
+    .pdf-chip{
+      border:1px solid #dbe3f0;
+      border-radius:999px;
+      padding:1.8mm 3mm;
+      font-size:8.6pt;
+      line-height:1.2;
+      color:#334155;
+      background:#f8fbff;
+      page-break-inside:avoid;
+    }
+
+    .pdf-bullets{
+      margin:0;
+      padding-left:5mm;
+      color:#334155;
+    }
+
+    .pdf-bullets li{
+      font-size:10pt;
+      line-height:1.7;
+      margin:0;
+    }
+
+    .pdf-bullets li + li{
+      margin-top:1.6mm;
+    }
+
+    .pdf-job,
+    .pdf-edu{
+      border-top:1px solid #e7edf5;
+      padding-top:4mm;
+      margin-top:4mm;
+      page-break-inside:avoid;
+      break-inside:avoid;
+    }
+
+    .pdf-job:first-child,
+    .pdf-edu:first-child{
+      border-top:none;
+      padding-top:0;
+      margin-top:0;
+    }
+
+    .pdf-job-title,
+    .pdf-edu-title{
+      font-size:12.5pt;
+      line-height:1.35;
+      color:#0f172a;
+      font-weight:800;
+      margin:0;
+    }
+
+    .pdf-job-meta{
+      margin-top:1.6mm;
+      font-size:10pt;
+      color:#475569;
+      font-weight:700;
+    }
+
+    .pdf-job-company{
+      color:#1e293b;
+    }
+
+    .pdf-footer{
+      margin-top:8mm;
+      text-align:center;
+      font-size:9pt;
+      color:#64748b;
+    }
+
     @media (max-width:1100px) and (min-width:821px){
       .page{
         padding:28px 20px 72px;
@@ -1184,7 +1417,7 @@
       <div class="hero-photo-stack">
         <div class="hero-photo-card surface reveal tilt">
           <div class="photo-frame">
-            <img src="assets/Me.JPG" alt="Ivan Kanev portrait" />
+            <img id="profileImage" src="assets/Me.JPG" alt="Ivan Kanev portrait" />
           </div>
         </div>
 
@@ -1207,7 +1440,7 @@
           </div>
 
           <div class="cv-card-actions">
-            <button class="btn btn-download" type="button">
+            <button class="btn btn-download" id="downloadPdfBtn" type="button">
               Download CV
             </button>
           </div>
@@ -1217,13 +1450,13 @@
       <div class="hero-content surface reveal tilt">
         <div class="eyebrow">Portfolio</div>
 
-        <h1>IVAN<br />KANEV</h1>
+        <h1 id="pdfName">IVAN<br />KANEV</h1>
 
-        <div class="hero-subtitle">
+        <div class="hero-subtitle" id="pdfRole">
           Principal Silicon Validation and Design Enablement Engineer
         </div>
 
-        <p class="hero-summary">
+        <p class="hero-summary" id="pdfSummary">
           Strong background in IC design, silicon validation, electrical test structures,
           failure analysis, layout engineering, and cross-functional design enablement.
           Experienced in process bring-up validation, DOE-based test development,
@@ -1297,7 +1530,7 @@
             <div class="section-kicker">Profile</div>
           </div>
 
-          <p class="section-intro">
+          <p class="section-intro" id="aboutText">
             Results-driven engineering professional with experience across silicon validation,
             design enablement, IC layout, biomedical R&amp;D, and advanced technical analysis.
             Strong in structured problem solving, technical documentation, collaboration,
@@ -1328,7 +1561,7 @@
           </div>
         </section>
 
-        <section class="section-card surface reveal tilt">
+        <section class="section-card surface reveal tilt" id="tools">
           <div class="section-heading">
             <h2 class="section-title">Tools &amp; Technologies</h2>
             <div class="section-kicker">Stack</div>
@@ -1344,7 +1577,7 @@
           </div>
         </section>
 
-        <section class="section-card surface reveal tilt">
+        <section class="section-card surface reveal tilt" id="strengths">
           <div class="section-heading">
             <h2 class="section-title">Strengths</h2>
             <div class="section-kicker">Value</div>
@@ -1462,6 +1695,10 @@
     </footer>
   </main>
 
+  <div id="pdfExportRoot" aria-hidden="true"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
   <script>
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -1472,6 +1709,8 @@
     const tiltElements = document.querySelectorAll(".tilt");
     const navToggle = document.getElementById("navToggle");
     const navWrap = document.getElementById("navWrap");
+    const downloadPdfBtn = document.getElementById("downloadPdfBtn");
+    const pdfExportRoot = document.getElementById("pdfExportRoot");
 
     if (!prefersReducedMotion) {
       const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -1532,7 +1771,204 @@
       navToggle.setAttribute("aria-expanded", String(!isOpen));
     }
 
+    function getText(selector) {
+      const el = document.querySelector(selector);
+      return el ? el.innerText.trim() : "";
+    }
+
+    function buildPdfSection(title, innerHtml) {
+      return `
+        <section class="pdf-section">
+          <h2 class="pdf-section-title">${title}</h2>
+          ${innerHtml}
+        </section>
+      `;
+    }
+
+    function buildExpertiseChips() {
+      const chips = [...document.querySelectorAll("#expertise .chip")]
+        .map(chip => `<span class="pdf-chip">${chip.innerText.trim()}</span>`)
+        .join("");
+      return `<div class="pdf-chip-list">${chips}</div>`;
+    }
+
+    function buildBulletList(selector) {
+      const rows = [...document.querySelectorAll(selector)]
+        .map(row => `<li>${row.querySelector("span:last-child").innerText.trim()}</li>`)
+        .join("");
+      return `<ul class="pdf-bullets">${rows}</ul>`;
+    }
+
+    function buildExperienceHtml() {
+      const jobs = [...document.querySelectorAll("#experience .timeline-item")].map((item) => {
+        const title = item.querySelector(".job-title")?.innerText.trim() || "";
+        const company = item.querySelector(".company")?.innerText.trim() || "";
+        const period = item.querySelector(".period")?.innerText.trim() || "";
+        const bullets = [...item.querySelectorAll("li")]
+          .map(li => `<li>${li.innerText.trim()}</li>`)
+          .join("");
+
+        return `
+          <div class="pdf-job">
+            <h3 class="pdf-job-title">${title}</h3>
+            <div class="pdf-job-meta">
+              <span class="pdf-job-company">${company}</span> · ${period}
+            </div>
+            <ul class="pdf-bullets">${bullets}</ul>
+          </div>
+        `;
+      }).join("");
+
+      return jobs;
+    }
+
+    function buildEducationHtml() {
+      const items = [...document.querySelectorAll("#education .mini-card")].map((item) => {
+        const title = item.querySelector("h3")?.innerText.trim() || "";
+        const body = item.querySelector("p")?.innerText.trim() || "";
+
+        return `
+          <div class="pdf-edu">
+            <h3 class="pdf-edu-title">${title}</h3>
+            <p class="pdf-paragraph" style="margin-top:2mm;">${body}</p>
+          </div>
+        `;
+      }).join("");
+
+      return items;
+    }
+
+    function buildStatsHtml() {
+      const stats = [...document.querySelectorAll(".hero-stats .stat-card")].map((card) => {
+        const number = card.querySelector(".stat-number")?.innerText.trim() || "";
+        const label = card.querySelector(".stat-label")?.innerText.trim() || "";
+        return `
+          <div class="pdf-stat">
+            <div class="pdf-stat-number">${number}</div>
+            <div class="pdf-stat-label">${label}</div>
+          </div>
+        `;
+      }).join("");
+
+      return `<div class="pdf-stats">${stats}</div>`;
+    }
+
+    function buildContactsHtml() {
+      const contacts = [...document.querySelectorAll("#contact .meta-item")].map((item) => {
+        const label = item.querySelector(".meta-label")?.innerText.trim() || "";
+        const value = item.querySelector(".meta-value")?.innerText.trim() || "";
+        return `
+          <div class="pdf-contact-item">
+            <div class="pdf-contact-label">${label}</div>
+            <div class="pdf-contact-value">${value}</div>
+          </div>
+        `;
+      }).join("");
+
+      return `<div class="pdf-contact-row">${contacts}</div>`;
+    }
+
+    function buildPdfMarkup() {
+      const photoSrc = document.getElementById("profileImage")?.src || "";
+      const name = getText("#pdfName").replace(/\n/g, " ");
+      const role = getText("#pdfRole");
+      const summary = getText("#pdfSummary");
+      const about = getText("#aboutText");
+
+      const html = `
+        <div class="pdf-sheet">
+          <div class="pdf-header">
+            <div class="pdf-photo">
+              <img src="${photoSrc}" alt="Ivan Kanev portrait" />
+            </div>
+
+            <div>
+              <div class="pdf-name">${name}</div>
+              <div class="pdf-role">${role}</div>
+              <p class="pdf-summary">${summary}</p>
+              ${buildContactsHtml()}
+              ${buildStatsHtml()}
+            </div>
+          </div>
+
+          <div class="pdf-main">
+            ${buildPdfSection("About", `<p class="pdf-paragraph">${about}</p>`)}
+            ${buildPdfSection("Core Expertise", buildExpertiseChips())}
+            ${buildPdfSection("Tools & Technologies", buildBulletList("#tools .skill-row"))}
+            ${buildPdfSection("Strengths", buildBulletList("#strengths .skill-row"))}
+            ${buildPdfSection("Work Experience", buildExperienceHtml())}
+            ${buildPdfSection("Education", buildEducationHtml())}
+          </div>
+
+          <div class="pdf-footer">© 2026 Ivan Kanev · Portfolio</div>
+        </div>
+      `;
+
+      pdfExportRoot.innerHTML = html;
+      return pdfExportRoot.firstElementChild;
+    }
+
+    async function waitForImages(root) {
+      const images = Array.from(root.querySelectorAll("img"));
+      await Promise.all(images.map((img) => {
+        if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+        return new Promise((resolve) => {
+          const done = () => resolve();
+          img.addEventListener("load", done, { once:true });
+          img.addEventListener("error", done, { once:true });
+        });
+      }));
+    }
+
+    async function exportPortfolioPdf() {
+      if (typeof html2pdf === "undefined") {
+        alert("PDF export library failed to load.");
+        return;
+      }
+
+      const originalText = downloadPdfBtn.textContent;
+      downloadPdfBtn.disabled = true;
+      downloadPdfBtn.textContent = "Preparing PDF...";
+
+      try {
+        const pdfNode = buildPdfMarkup();
+        await waitForImages(pdfNode);
+        await new Promise((resolve) => setTimeout(resolve, 250));
+
+        const options = {
+          margin: 0,
+          filename: "Ivan_Kanev_CV.pdf",
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff",
+            scrollX: 0,
+            scrollY: 0
+          },
+          jsPDF: {
+            unit: "mm",
+            format: "a4",
+            orientation: "portrait"
+          },
+          pagebreak: {
+            mode: ["css", "legacy"]
+          }
+        };
+
+        await html2pdf().set(options).from(pdfNode).save();
+      } catch (error) {
+        console.error(error);
+        alert("PDF export failed on this device. Please try again.");
+      } finally {
+        pdfExportRoot.innerHTML = "";
+        downloadPdfBtn.disabled = false;
+        downloadPdfBtn.textContent = originalText;
+      }
+    }
+
     navToggle.addEventListener("click", toggleMobileNav);
+    downloadPdfBtn.addEventListener("click", exportPortfolioPdf);
 
     navLinks.forEach((link) => {
       link.addEventListener("click", () => {
