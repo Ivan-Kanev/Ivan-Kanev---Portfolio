@@ -392,10 +392,9 @@
     .cv-card{
       border-radius:24px;
       padding:18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
       transition:transform .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease);
     }
 
@@ -405,26 +404,40 @@
       background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
     }
 
+    .cv-card-copy{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      min-width:0;
+    }
+
     .cv-card-kicker{
       font-size:12px;
       font-weight:750;
       letter-spacing:.28px;
       color:#dce4ff;
-      margin-bottom:4px;
+      text-transform:uppercase;
     }
 
     .cv-card-title{
-      font-size:17px;
-      font-weight:760;
-      line-height:1.35;
+      font-size:16px;
+      font-weight:780;
+      line-height:1.25;
       color:var(--text);
+      max-width:18ch;
     }
 
     .cv-card-subtitle{
-      margin-top:6px;
       font-size:13px;
-      line-height:1.6;
+      line-height:1.65;
       color:var(--muted);
+      max-width:26ch;
+      margin:0;
+    }
+
+    .cv-card-actions{
+      display:flex;
+      width:100%;
     }
 
     .hero-content{
@@ -533,10 +546,14 @@
     }
 
     .btn-download{
+      width:100%;
+      justify-content:center;
       color:#07111f;
       background:linear-gradient(135deg,var(--accent),var(--accent-2));
       box-shadow:0 16px 36px rgba(83,228,199,.16);
-      min-width:160px;
+      min-height:50px;
+      font-size:15px;
+      font-weight:800;
     }
 
     .hero-stats{
@@ -1067,15 +1084,6 @@
       .brand-subtitle{
         white-space:normal;
       }
-
-      .cv-card{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      .btn-download{
-        width:100%;
-      }
     }
 
     @media (max-width:560px){
@@ -1193,14 +1201,16 @@
           <div class="cv-card-copy">
             <div class="cv-card-kicker">Curriculum Vitae</div>
             <div class="cv-card-title">Export CV as PDF</div>
-            <div class="cv-card-subtitle">
-              CV is generated automatically and downloaded to your Downloads folder.
-            </div>
+            <p class="cv-card-subtitle">
+              Clean PDF export generated automatically from this portfolio.
+            </p>
           </div>
 
-          <button class="btn btn-download" type="button">
-            Download CV
-          </button>
+          <div class="cv-card-actions">
+            <button class="btn btn-download" type="button">
+              Download CV
+            </button>
+          </div>
         </div>
       </div>
 
