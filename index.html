@@ -541,7 +541,7 @@
     }
 
     .btn:disabled{
-      opacity:.65;
+      opacity:.66;
       cursor:not-allowed;
     }
 
@@ -925,94 +925,143 @@
       scroll-margin-top:110px;
     }
 
-    .pdf-export{
-      position:fixed;
-      left:-99999px;
+    #pdfCloneMount{
+      position:absolute;
       top:0;
-      width:1000px;
-      background:#ffffff;
-      color:#101828;
-      padding:40px;
+      left:0;
+      width:1240px;
+      padding:0;
+      opacity:.01;
+      pointer-events:none;
       z-index:-1;
+      background:#ffffff;
+      overflow:visible;
     }
 
-    .pdf-sheet{
-      font-family:Arial, Helvetica, sans-serif;
-      color:#111827;
+    .pdf-mode{
+      background:#ffffff !important;
+      color:#111827 !important;
     }
 
-    .pdf-header{
-      display:flex;
-      justify-content:space-between;
-      gap:24px;
-      border-bottom:2px solid #dbe3f0;
-      padding-bottom:18px;
-      margin-bottom:22px;
+    .pdf-mode::before,
+    .pdf-mode::after{
+      display:none !important;
     }
 
-    .pdf-name{
-      font-size:34px;
-      font-weight:800;
-      line-height:1.1;
-      margin-bottom:8px;
+    .pdf-mode .page{
+      max-width:none !important;
+      padding:28px !important;
+      background:#ffffff !important;
     }
 
-    .pdf-role{
-      font-size:18px;
-      color:#334155;
-      line-height:1.4;
+    .pdf-mode .site-header,
+    .pdf-mode .scroll-progress,
+    .pdf-mode .ambient-particles{
+      display:none !important;
     }
 
-    .pdf-contact{
-      font-size:14px;
-      line-height:1.7;
-      color:#334155;
-      text-align:right;
+    .pdf-mode .surface,
+    .pdf-mode .hero-photo-card,
+    .pdf-mode .hero-content,
+    .pdf-mode .section-card,
+    .pdf-mode .timeline-item,
+    .pdf-mode .mini-card,
+    .pdf-mode .stat-card,
+    .pdf-mode .cv-card,
+    .pdf-mode .meta-item,
+    .pdf-mode .chip,
+    .pdf-mode .skill-row{
+      background:#ffffff !important;
+      color:#111827 !important;
+      box-shadow:none !important;
+      backdrop-filter:none !important;
+      border:1px solid #dbe3f0 !important;
     }
 
-    .pdf-grid{
-      display:grid;
-      grid-template-columns:1fr 1.25fr;
-      gap:28px;
+    .pdf-mode .hero-photo-card::before,
+    .pdf-mode .hero-content::before,
+    .pdf-mode .section-card::before,
+    .pdf-mode .timeline-item::before,
+    .pdf-mode .mini-card::before,
+    .pdf-mode .stat-card::before,
+    .pdf-mode .cv-card::before,
+    .pdf-mode .photo-overlay{
+      display:none !important;
     }
 
-    .pdf-block{
-      margin-bottom:22px;
+    .pdf-mode .eyebrow,
+    .pdf-mode .section-kicker,
+    .pdf-mode .photo-badge,
+    .pdf-mode .btn,
+    .pdf-mode .nav-toggle,
+    .pdf-mode #downloadPdfBtn{
+      display:none !important;
     }
 
-    .pdf-block h3{
-      margin:0 0 10px;
-      font-size:16px;
-      text-transform:uppercase;
-      letter-spacing:.8px;
-      color:#1d4ed8;
+    .pdf-mode h1,
+    .pdf-mode .hero-subtitle,
+    .pdf-mode .section-title,
+    .pdf-mode .job-title,
+    .pdf-mode .cv-card-title,
+    .pdf-mode .brand-title{
+      color:#0f172a !important;
     }
 
-    .pdf-block p,
-    .pdf-block li{
-      font-size:14px;
-      line-height:1.7;
-      color:#1f2937;
+    .pdf-mode .hero-summary,
+    .pdf-mode .section-intro,
+    .pdf-mode .company,
+    .pdf-mode .period,
+    .pdf-mode .photo-meta,
+    .pdf-mode .stat-label,
+    .pdf-mode .meta-label,
+    .pdf-mode .meta-value,
+    .pdf-mode .timeline-item ul,
+    .pdf-mode .mini-card p,
+    .pdf-mode .cv-card-subtitle,
+    .pdf-mode .brand-subtitle,
+    .pdf-mode .chip,
+    .pdf-mode .skill-row{
+      color:#334155 !important;
     }
 
-    .pdf-block ul{
-      margin:0;
-      padding-left:18px;
+    .pdf-mode .content-grid{
+      grid-template-columns:1fr 1.3fr !important;
     }
 
-    .pdf-chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
+    .pdf-mode .hero{
+      grid-template-columns:320px 1fr !important;
+      align-items:start !important;
     }
 
-    .pdf-chip{
-      padding:6px 10px;
-      border:1px solid #dbe3f0;
-      border-radius:999px;
-      font-size:12px;
-      color:#334155;
-      background:#f8fbff;
+    .pdf-mode .hero-stats{
+      grid-template-columns:repeat(3, minmax(0,1fr)) !important;
+    }
+
+    .pdf-mode .hero-meta{
+      grid-template-columns:repeat(2, minmax(0,1fr)) !important;
+    }
+
+    .pdf-mode .photo-frame{
+      min-height:440px !important;
+      border:1px solid #dbe3f0 !important;
+      background:#f8fafc !important;
+    }
+
+    .pdf-mode .photo-frame img{
+      transform:none !important;
+    }
+
+    .pdf-mode .reveal{
+      opacity:1 !important;
+      transform:none !important;
+    }
+
+    .pdf-mode .tilt{
+      transform:none !important;
+    }
+
+    .pdf-mode .footer{
+      color:#64748b !important;
     }
 
     @media (max-width:1180px){
@@ -1261,9 +1310,9 @@
         <div class="cv-card surface reveal">
           <div class="cv-card-copy">
             <div class="cv-card-kicker">Curriculum Vitae</div>
-            <div class="cv-card-title">Export this portfolio as PDF</div>
+            <div class="cv-card-title">Export CV as PDF</div>
             <div class="cv-card-subtitle">
-              The PDF is generated automatically from the current GitHub page content.
+              CV is generated automatically and downloaded to your Downloads folder.
             </div>
           </div>
 
@@ -1274,7 +1323,7 @@
       </div>
 
       <div class="hero-content surface reveal tilt">
-        <div class="eyebrow">Professional Portfolio / One Page Profile</div>
+        <div class="eyebrow">Portfolio</div>
 
         <h1>IVAN<br />KANEV</h1>
 
@@ -1297,7 +1346,7 @@
 
         <div class="hero-stats">
           <div class="stat-card">
-            <div class="stat-number">9+ Years</div>
+            <div class="stat-number">10+ Years</div>
             <div class="stat-label">Engineering experience across validation, layout and R&amp;D</div>
           </div>
 
@@ -1308,7 +1357,7 @@
 
           <div class="stat-card">
             <div class="stat-number">Ph.D.</div>
-            <div class="stat-label">Biomedical engineering and medical devices research background</div>
+            <div class="stat-label">Biomedical engineering (medical devices)</div>
           </div>
         </div>
 
@@ -1521,94 +1570,7 @@
     </footer>
   </main>
 
-  <section class="pdf-export" id="pdfExportRoot" aria-hidden="true">
-    <div class="pdf-sheet">
-      <div class="pdf-header">
-        <div>
-          <div class="pdf-name">Ivan Kanev</div>
-          <div class="pdf-role">Principal Silicon Validation and Design Enablement Engineer</div>
-        </div>
-        <div class="pdf-contact">
-          <div>ikanev@icloud.com</div>
-          <div>+359 888 568 681</div>
-          <div>linkedin.com/in/ivan-kanev-332323131</div>
-          <div>researchgate.net/profile/Ivan-Kanev</div>
-        </div>
-      </div>
-
-      <div class="pdf-grid">
-        <div>
-          <div class="pdf-block">
-            <h3>About</h3>
-            <p>
-              Results-driven engineering professional with experience across silicon validation,
-              design enablement, IC layout, biomedical R&amp;D, and advanced technical analysis.
-              Strong in structured problem solving, technical documentation, collaboration,
-              and execution in international engineering environments. Also serving as a patent
-              advocate within GlobalFoundries, with involvement in more than 40 patents and trade secrets.
-            </p>
-          </div>
-
-          <div class="pdf-block">
-            <h3>Core Expertise</h3>
-            <div class="pdf-chips">
-              <span class="pdf-chip">DOE Electrical Test Structures</span>
-              <span class="pdf-chip">Silicon Validation</span>
-              <span class="pdf-chip">Data Analysis</span>
-              <span class="pdf-chip">FMEA</span>
-              <span class="pdf-chip">IC Layout Design</span>
-              <span class="pdf-chip">Design Rule Validation</span>
-              <span class="pdf-chip">Process Integration</span>
-              <span class="pdf-chip">Yield Engineering</span>
-              <span class="pdf-chip">Root Cause Analysis</span>
-              <span class="pdf-chip">Design Enablement</span>
-            </div>
-          </div>
-
-          <div class="pdf-block">
-            <h3>Tools &amp; Technologies</h3>
-            <ul>
-              <li>Cadence Virtuoso Schematic Editor &amp; Virtuoso Layout Suite</li>
-              <li>DRC, LVS, latch-up, ERC, BPC, antenna checks, mask difference</li>
-              <li>ESD / EMC / RF / MEMS / Hall related environments</li>
-              <li>Python, R, SKILL</li>
-              <li>Jira, Git, DesSync, SVN, CVS</li>
-            </ul>
-          </div>
-        </div>
-
-        <div>
-          <div class="pdf-block">
-            <h3>Work Experience</h3>
-            <ul>
-              <li><strong>GlobalFoundries Ltd. — Principal Silicon Validation and Design Enablement Engineer (2021 – Present)</strong><br>Silicon validation, DOE test structure definition, process bring-up analysis, root-cause analysis, and cross-functional design/process/manufacturing collaboration.</li>
-              <li><strong>Melexis Bulgaria Ltd. — Analog IC Layout Design Engineer (2017 – 2021)</strong><br>Hierarchical schematic-to-layout implementation, DRC/LVS verification, floorplanning, and full-chip documentation.</li>
-              <li><strong>eSenseLab Ltd. — R&amp;D Biomedical Engineer (2016 – 2017)</strong><br>PCB layout and software testing for biomedical devices including ECG holters, defibrillators, sleep trackers, and monitoring systems.</li>
-            </ul>
-          </div>
-
-          <div class="pdf-block">
-            <h3>Education</h3>
-            <ul>
-              <li><strong>Ph.D., Technical University of Sofia (2018 – 2023)</strong><br>Profile: Medical Devices. Research focused on sonification of electrocardiographic signals for emergency patient telemetry applications.</li>
-              <li><strong>Master’s Degree, Technical University of Sofia (2016 – 2018)</strong><br>Biomedical Engineering.</li>
-              <li><strong>Bachelor’s Degree, Technical University of Sofia (2012 – 2016)</strong><br>Biomedical Engineering.</li>
-              <li><strong>Professional High School of Electronics John Atanasov (2008 – 2012)</strong><br>Electronics with microprocessor-oriented profile.</li>
-            </ul>
-          </div>
-
-          <div class="pdf-block">
-            <h3>Highlights</h3>
-            <ul>
-              <li>9+ years of engineering experience across validation, layout, and R&amp;D.</li>
-              <li>40+ patents and trade secrets supported through patent advocacy.</li>
-              <li>Ph.D. background in biomedical engineering and medical devices research.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div id="pdfCloneMount" aria-hidden="true"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
@@ -1623,7 +1585,7 @@
     const navToggle = document.getElementById("navToggle");
     const navWrap = document.getElementById("navWrap");
     const downloadPdfBtn = document.getElementById("downloadPdfBtn");
-    const pdfExportRoot = document.getElementById("pdfExportRoot");
+    const pdfCloneMount = document.getElementById("pdfCloneMount");
 
     if (!prefersReducedMotion) {
       const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -1684,6 +1646,38 @@
       navToggle.setAttribute("aria-expanded", String(!isOpen));
     }
 
+    async function waitForImages(root) {
+      const images = Array.from(root.querySelectorAll("img"));
+
+      await Promise.all(images.map((img) => {
+        if (img.complete && img.naturalWidth > 0) {
+          return Promise.resolve();
+        }
+
+        return new Promise((resolve) => {
+          const done = () => resolve();
+          img.addEventListener("load", done, { once: true });
+          img.addEventListener("error", done, { once: true });
+        });
+      }));
+    }
+
+    function buildPdfClone() {
+      pdfCloneMount.innerHTML = "";
+
+      const cloneRoot = document.createElement("div");
+      cloneRoot.className = "pdf-mode";
+
+      const clonedPage = document.querySelector(".page").cloneNode(true);
+      clonedPage.querySelectorAll(".reveal").forEach((el) => el.classList.add("active"));
+      clonedPage.querySelectorAll(".tilt").forEach((el) => el.classList.remove("tilt"));
+
+      cloneRoot.appendChild(clonedPage);
+      pdfCloneMount.appendChild(cloneRoot);
+
+      return cloneRoot;
+    }
+
     async function exportPortfolioPdf() {
       if (typeof html2pdf === "undefined") {
         alert("PDF export library failed to load.");
@@ -1694,31 +1688,39 @@
       downloadPdfBtn.disabled = true;
       downloadPdfBtn.textContent = "Preparing PDF...";
 
-      const opt = {
-        margin: [10, 10, 10, 10],
-        filename: "Ivan_Kanev_CV.pdf",
-        image: { type: "jpeg", quality: 0.98 },
-        html2canvas: {
-          scale: 2,
-          useCORS: true,
-          backgroundColor: "#ffffff"
-        },
-        jsPDF: {
-          unit: "mm",
-          format: "a4",
-          orientation: "portrait"
-        },
-        pagebreak: {
-          mode: ["avoid-all", "css", "legacy"]
-        }
-      };
-
       try {
-        await html2pdf().set(opt).from(pdfExportRoot).save();
+        const clone = buildPdfClone();
+        await waitForImages(clone);
+        await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+
+        const options = {
+          margin: [8, 8, 8, 8],
+          filename: "Ivan_Kanev_CV.pdf",
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff",
+            scrollX: 0,
+            scrollY: 0,
+            windowWidth: 1280
+          },
+          jsPDF: {
+            unit: "mm",
+            format: "a4",
+            orientation: "portrait"
+          },
+          pagebreak: {
+            mode: ["css", "legacy"]
+          }
+        };
+
+        await html2pdf().set(options).from(clone).save();
       } catch (error) {
         console.error(error);
-        alert("The PDF could not be generated on this device.");
+        alert("PDF export failed on this device. Please try again.");
       } finally {
+        pdfCloneMount.innerHTML = "";
         downloadPdfBtn.disabled = false;
         downloadPdfBtn.textContent = originalText;
       }
