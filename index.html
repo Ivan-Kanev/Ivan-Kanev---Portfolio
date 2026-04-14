@@ -17,25 +17,18 @@
       --bg:#040714;
       --bg-soft:#09101f;
       --bg-elev:#0d1529;
-      --panel:rgba(13,20,39,0.72);
-      --panel-strong:rgba(13,20,39,0.92);
-      --card:rgba(255,255,255,0.055);
-      --card-strong:rgba(255,255,255,0.08);
       --line:rgba(255,255,255,0.08);
       --line-strong:rgba(255,255,255,0.14);
       --text:#f7f9ff;
       --muted:#a9b4d0;
-      --muted-2:#d7dff6;
       --accent:#7c9cff;
       --accent-2:#53e4c7;
       --accent-3:#9474ff;
       --shadow-xl:0 40px 120px rgba(0,0,0,.46);
-      --shadow-lg:0 24px 70px rgba(0,0,0,.34);
       --shadow-md:0 18px 40px rgba(0,0,0,.24);
       --radius-xl:34px;
       --radius-lg:28px;
       --radius-md:22px;
-      --radius-sm:16px;
       --max:1280px;
       --header-h:84px;
       --ease:cubic-bezier(.22,1,.36,1);
@@ -200,10 +193,6 @@
       flex:0 0 auto;
     }
 
-    .brand-copy{
-      min-width:0;
-    }
-
     .brand-title{
       font-size:17px;
       font-weight:760;
@@ -231,6 +220,7 @@
       justify-content:center;
       padding:0;
       flex:0 0 auto;
+      position:relative;
     }
 
     .nav-toggle span,
@@ -273,11 +263,9 @@
       transition:
         color .25s var(--ease),
         background .25s var(--ease),
-        transform .25s var(--ease),
-        box-shadow .25s var(--ease);
+        transform .25s var(--ease);
       font-weight:650;
       font-size:14px;
-      position:relative;
     }
 
     nav a:hover{
@@ -424,10 +412,6 @@
       transform:translateY(-3px);
       border-color:rgba(255,255,255,.14);
       background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
-    }
-
-    .cv-card-copy{
-      min-width:0;
     }
 
     .cv-card-kicker{
@@ -925,143 +909,238 @@
       scroll-margin-top:110px;
     }
 
-    #pdfCloneMount{
-      position:absolute;
+    /* PDF export root */
+    #pdfExportRoot{
+      position:fixed;
+      left:-99999px;
       top:0;
-      left:0;
-      width:1240px;
-      padding:0;
-      opacity:.01;
-      pointer-events:none;
+      width:210mm;
+      background:#fff;
+      color:#111827;
       z-index:-1;
-      background:#ffffff;
-      overflow:visible;
+      opacity:0;
+      pointer-events:none;
     }
 
-    .pdf-mode{
-      background:#ffffff !important;
-      color:#111827 !important;
+    .pdf-sheet{
+      width:210mm;
+      min-height:297mm;
+      padding:16mm;
+      background:#fff;
+      color:#111827;
+      font-family:Arial, Helvetica, sans-serif;
     }
 
-    .pdf-mode::before,
-    .pdf-mode::after{
-      display:none !important;
+    .pdf-header{
+      display:grid;
+      grid-template-columns:42mm 1fr;
+      gap:10mm;
+      align-items:start;
+      border-bottom:1px solid #dbe3f0;
+      padding-bottom:8mm;
+      margin-bottom:8mm;
     }
 
-    .pdf-mode .page{
-      max-width:none !important;
-      padding:28px !important;
-      background:#ffffff !important;
+    .pdf-photo{
+      width:42mm;
+      height:52mm;
+      border:1px solid #dbe3f0;
+      border-radius:4mm;
+      overflow:hidden;
+      background:#f8fafc;
     }
 
-    .pdf-mode .site-header,
-    .pdf-mode .scroll-progress,
-    .pdf-mode .ambient-particles{
-      display:none !important;
+    .pdf-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
     }
 
-    .pdf-mode .surface,
-    .pdf-mode .hero-photo-card,
-    .pdf-mode .hero-content,
-    .pdf-mode .section-card,
-    .pdf-mode .timeline-item,
-    .pdf-mode .mini-card,
-    .pdf-mode .stat-card,
-    .pdf-mode .cv-card,
-    .pdf-mode .meta-item,
-    .pdf-mode .chip,
-    .pdf-mode .skill-row{
-      background:#ffffff !important;
-      color:#111827 !important;
-      box-shadow:none !important;
-      backdrop-filter:none !important;
-      border:1px solid #dbe3f0 !important;
+    .pdf-name{
+      font-size:24pt;
+      font-weight:800;
+      line-height:1.02;
+      letter-spacing:-.5px;
+      color:#0f172a;
+      margin:0 0 3mm;
     }
 
-    .pdf-mode .hero-photo-card::before,
-    .pdf-mode .hero-content::before,
-    .pdf-mode .section-card::before,
-    .pdf-mode .timeline-item::before,
-    .pdf-mode .mini-card::before,
-    .pdf-mode .stat-card::before,
-    .pdf-mode .cv-card::before,
-    .pdf-mode .photo-overlay{
-      display:none !important;
+    .pdf-role{
+      font-size:12.5pt;
+      line-height:1.35;
+      color:#334155;
+      font-weight:700;
+      margin-bottom:5mm;
     }
 
-    .pdf-mode .eyebrow,
-    .pdf-mode .section-kicker,
-    .pdf-mode .photo-badge,
-    .pdf-mode .btn,
-    .pdf-mode .nav-toggle,
-    .pdf-mode #downloadPdfBtn{
-      display:none !important;
+    .pdf-summary{
+      font-size:10.5pt;
+      line-height:1.65;
+      color:#334155;
+      margin:0;
     }
 
-    .pdf-mode h1,
-    .pdf-mode .hero-subtitle,
-    .pdf-mode .section-title,
-    .pdf-mode .job-title,
-    .pdf-mode .cv-card-title,
-    .pdf-mode .brand-title{
-      color:#0f172a !important;
+    .pdf-contact-row{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:4mm;
+      margin-top:6mm;
     }
 
-    .pdf-mode .hero-summary,
-    .pdf-mode .section-intro,
-    .pdf-mode .company,
-    .pdf-mode .period,
-    .pdf-mode .photo-meta,
-    .pdf-mode .stat-label,
-    .pdf-mode .meta-label,
-    .pdf-mode .meta-value,
-    .pdf-mode .timeline-item ul,
-    .pdf-mode .mini-card p,
-    .pdf-mode .cv-card-subtitle,
-    .pdf-mode .brand-subtitle,
-    .pdf-mode .chip,
-    .pdf-mode .skill-row{
-      color:#334155 !important;
+    .pdf-contact-item{
+      border:1px solid #dbe3f0;
+      border-radius:4mm;
+      padding:3.5mm 4mm;
+      min-width:0;
     }
 
-    .pdf-mode .content-grid{
-      grid-template-columns:1fr 1.3fr !important;
+    .pdf-contact-label{
+      font-size:8pt;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      color:#64748b;
+      margin-bottom:2mm;
+      font-weight:700;
     }
 
-    .pdf-mode .hero{
-      grid-template-columns:320px 1fr !important;
-      align-items:start !important;
+    .pdf-contact-value{
+      font-size:9.5pt;
+      line-height:1.55;
+      color:#1f2937;
+      overflow-wrap:anywhere;
+      word-break:break-word;
     }
 
-    .pdf-mode .hero-stats{
-      grid-template-columns:repeat(3, minmax(0,1fr)) !important;
+    .pdf-stats{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:4mm;
+      margin-top:6mm;
     }
 
-    .pdf-mode .hero-meta{
-      grid-template-columns:repeat(2, minmax(0,1fr)) !important;
+    .pdf-stat{
+      border:1px solid #dbe3f0;
+      border-radius:4mm;
+      padding:4mm;
     }
 
-    .pdf-mode .photo-frame{
-      min-height:440px !important;
-      border:1px solid #dbe3f0 !important;
-      background:#f8fafc !important;
+    .pdf-stat-number{
+      font-size:16pt;
+      font-weight:800;
+      color:#0f172a;
+      margin-bottom:2mm;
     }
 
-    .pdf-mode .photo-frame img{
-      transform:none !important;
+    .pdf-stat-label{
+      font-size:9pt;
+      line-height:1.5;
+      color:#475569;
     }
 
-    .pdf-mode .reveal{
-      opacity:1 !important;
-      transform:none !important;
+    .pdf-main{
+      margin-top:8mm;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:7mm;
     }
 
-    .pdf-mode .tilt{
-      transform:none !important;
+    .pdf-section{
+      border:1px solid #dbe3f0;
+      border-radius:5mm;
+      padding:5mm;
+      page-break-inside:avoid;
+      break-inside:avoid;
     }
 
-    .pdf-mode .footer{
-      color:#64748b !important;
+    .pdf-section-title{
+      margin:0 0 4mm;
+      font-size:15pt;
+      line-height:1.2;
+      color:#0f172a;
+      font-weight:800;
+    }
+
+    .pdf-paragraph{
+      margin:0;
+      font-size:10.3pt;
+      line-height:1.7;
+      color:#334155;
+    }
+
+    .pdf-chip-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:2.5mm;
+    }
+
+    .pdf-chip{
+      border:1px solid #dbe3f0;
+      border-radius:999px;
+      padding:1.8mm 3mm;
+      font-size:8.6pt;
+      line-height:1.2;
+      color:#334155;
+      background:#f8fbff;
+      page-break-inside:avoid;
+    }
+
+    .pdf-bullets{
+      margin:0;
+      padding-left:5mm;
+      color:#334155;
+    }
+
+    .pdf-bullets li{
+      font-size:10pt;
+      line-height:1.7;
+      margin:0;
+    }
+
+    .pdf-bullets li + li{
+      margin-top:1.6mm;
+    }
+
+    .pdf-job,
+    .pdf-edu{
+      border-top:1px solid #e7edf5;
+      padding-top:4mm;
+      margin-top:4mm;
+      page-break-inside:avoid;
+      break-inside:avoid;
+    }
+
+    .pdf-job:first-child,
+    .pdf-edu:first-child{
+      border-top:none;
+      padding-top:0;
+      margin-top:0;
+    }
+
+    .pdf-job-title,
+    .pdf-edu-title{
+      font-size:12.5pt;
+      line-height:1.35;
+      color:#0f172a;
+      font-weight:800;
+      margin:0;
+    }
+
+    .pdf-job-meta{
+      margin-top:1.6mm;
+      font-size:10pt;
+      color:#475569;
+      font-weight:700;
+    }
+
+    .pdf-job-company{
+      color:#1e293b;
+    }
+
+    .pdf-footer{
+      margin-top:8mm;
+      text-align:center;
+      font-size:9pt;
+      color:#64748b;
     }
 
     @media (max-width:1180px){
@@ -1094,7 +1173,6 @@
 
       .nav-toggle{
         display:flex;
-        position:relative;
       }
 
       .nav-wrap{
@@ -1295,7 +1373,7 @@
       <div class="hero-photo-stack">
         <div class="hero-photo-card surface reveal tilt">
           <div class="photo-frame">
-            <img src="assets/Me.JPG" alt="Ivan Kanev portrait" />
+            <img src="assets/Me.JPG" alt="Ivan Kanev portrait" id="profileImage" />
             <div class="photo-overlay">
               <div class="photo-badge">Engineering Leadership · Validation · Innovation</div>
               <div class="photo-meta">
@@ -1325,13 +1403,13 @@
       <div class="hero-content surface reveal tilt">
         <div class="eyebrow">Portfolio</div>
 
-        <h1>IVAN<br />KANEV</h1>
+        <h1 id="pdfName">IVAN<br />KANEV</h1>
 
-        <div class="hero-subtitle">
+        <div class="hero-subtitle" id="pdfRole">
           Principal Silicon Validation and Design Enablement Engineer
         </div>
 
-        <p class="hero-summary">
+        <p class="hero-summary" id="pdfSummary">
           Strong background in IC design, silicon validation, electrical test structures,
           failure analysis, layout engineering, and cross-functional design enablement.
           Experienced in process bring-up validation, DOE-based test development,
@@ -1436,7 +1514,7 @@
           </div>
         </section>
 
-        <section class="section-card surface reveal tilt">
+        <section class="section-card surface reveal tilt" id="tools">
           <div class="section-heading">
             <h2 class="section-title">Tools &amp; Technologies</h2>
             <div class="section-kicker">Stack</div>
@@ -1452,7 +1530,7 @@
           </div>
         </section>
 
-        <section class="section-card surface reveal tilt">
+        <section class="section-card surface reveal tilt" id="strengths">
           <div class="section-heading">
             <h2 class="section-title">Strengths</h2>
             <div class="section-kicker">Value</div>
@@ -1570,7 +1648,7 @@
     </footer>
   </main>
 
-  <div id="pdfCloneMount" aria-hidden="true"></div>
+  <div id="pdfExportRoot" aria-hidden="true"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
@@ -1585,7 +1663,7 @@
     const navToggle = document.getElementById("navToggle");
     const navWrap = document.getElementById("navWrap");
     const downloadPdfBtn = document.getElementById("downloadPdfBtn");
-    const pdfCloneMount = document.getElementById("pdfCloneMount");
+    const pdfExportRoot = document.getElementById("pdfExportRoot");
 
     if (!prefersReducedMotion) {
       const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -1646,36 +1724,158 @@
       navToggle.setAttribute("aria-expanded", String(!isOpen));
     }
 
-    async function waitForImages(root) {
-      const images = Array.from(root.querySelectorAll("img"));
-
-      await Promise.all(images.map((img) => {
-        if (img.complete && img.naturalWidth > 0) {
-          return Promise.resolve();
-        }
-
-        return new Promise((resolve) => {
-          const done = () => resolve();
-          img.addEventListener("load", done, { once: true });
-          img.addEventListener("error", done, { once: true });
-        });
-      }));
+    function getText(selector) {
+      const el = document.querySelector(selector);
+      return el ? el.innerText.trim() : "";
     }
 
-    function buildPdfClone() {
-      pdfCloneMount.innerHTML = "";
+    function getHtml(selector) {
+      const el = document.querySelector(selector);
+      return el ? el.innerHTML : "";
+    }
 
-      const cloneRoot = document.createElement("div");
-      cloneRoot.className = "pdf-mode";
+    function buildPdfSection(title, innerHtml) {
+      return `
+        <section class="pdf-section">
+          <h2 class="pdf-section-title">${title}</h2>
+          ${innerHtml}
+        </section>
+      `;
+    }
 
-      const clonedPage = document.querySelector(".page").cloneNode(true);
-      clonedPage.querySelectorAll(".reveal").forEach((el) => el.classList.add("active"));
-      clonedPage.querySelectorAll(".tilt").forEach((el) => el.classList.remove("tilt"));
+    function buildExpertiseChips() {
+      const chips = [...document.querySelectorAll("#expertise .chip")]
+        .map(chip => `<span class="pdf-chip">${chip.innerText.trim()}</span>`)
+        .join("");
+      return `<div class="pdf-chip-list">${chips}</div>`;
+    }
 
-      cloneRoot.appendChild(clonedPage);
-      pdfCloneMount.appendChild(cloneRoot);
+    function buildBulletList(selector) {
+      const rows = [...document.querySelectorAll(selector)]
+        .map(row => `<li>${row.querySelector("span:last-child").innerText.trim()}</li>`)
+        .join("");
+      return `<ul class="pdf-bullets">${rows}</ul>`;
+    }
 
-      return cloneRoot;
+    function buildExperienceHtml() {
+      const jobs = [...document.querySelectorAll("#experience .timeline-item")].map((item) => {
+        const title = item.querySelector(".job-title")?.innerText.trim() || "";
+        const company = item.querySelector(".company")?.innerText.trim() || "";
+        const period = item.querySelector(".period")?.innerText.trim() || "";
+        const bullets = [...item.querySelectorAll("li")]
+          .map(li => `<li>${li.innerText.trim()}</li>`)
+          .join("");
+
+        return `
+          <div class="pdf-job">
+            <h3 class="pdf-job-title">${title}</h3>
+            <div class="pdf-job-meta">
+              <span class="pdf-job-company">${company}</span> · ${period}
+            </div>
+            <ul class="pdf-bullets">${bullets}</ul>
+          </div>
+        `;
+      }).join("");
+
+      return jobs;
+    }
+
+    function buildEducationHtml() {
+      const items = [...document.querySelectorAll("#education .mini-card")].map((item) => {
+        const title = item.querySelector("h3")?.innerText.trim() || "";
+        const body = item.querySelector("p")?.innerText.trim() || "";
+
+        return `
+          <div class="pdf-edu">
+            <h3 class="pdf-edu-title">${title}</h3>
+            <p class="pdf-paragraph" style="margin-top:2mm;">${body}</p>
+          </div>
+        `;
+      }).join("");
+
+      return items;
+    }
+
+    function buildStatsHtml() {
+      const stats = [...document.querySelectorAll(".hero-stats .stat-card")].map((card) => {
+        const number = card.querySelector(".stat-number")?.innerText.trim() || "";
+        const label = card.querySelector(".stat-label")?.innerText.trim() || "";
+        return `
+          <div class="pdf-stat">
+            <div class="pdf-stat-number">${number}</div>
+            <div class="pdf-stat-label">${label}</div>
+          </div>
+        `;
+      }).join("");
+
+      return `<div class="pdf-stats">${stats}</div>`;
+    }
+
+    function buildContactsHtml() {
+      const contacts = [...document.querySelectorAll("#contact .meta-item")].map((item) => {
+        const label = item.querySelector(".meta-label")?.innerText.trim() || "";
+        const value = item.querySelector(".meta-value")?.innerText.trim() || "";
+        return `
+          <div class="pdf-contact-item">
+            <div class="pdf-contact-label">${label}</div>
+            <div class="pdf-contact-value">${value}</div>
+          </div>
+        `;
+      }).join("");
+
+      return `<div class="pdf-contact-row">${contacts}</div>`;
+    }
+
+    function buildPdfMarkup() {
+      const photoSrc = document.getElementById("profileImage")?.src || "";
+      const name = getText("#pdfName").replace(/\n/g, " ");
+      const role = getText("#pdfRole");
+      const summary = getText("#pdfSummary");
+      const about = getText("#about .section-intro");
+
+      const html = `
+        <div class="pdf-sheet">
+          <div class="pdf-header">
+            <div class="pdf-photo">
+              <img src="${photoSrc}" alt="Ivan Kanev portrait" />
+            </div>
+
+            <div>
+              <div class="pdf-name">${name}</div>
+              <div class="pdf-role">${role}</div>
+              <p class="pdf-summary">${summary}</p>
+              ${buildContactsHtml()}
+              ${buildStatsHtml()}
+            </div>
+          </div>
+
+          <div class="pdf-main">
+            ${buildPdfSection("About", `<p class="pdf-paragraph">${about}</p>`)}
+            ${buildPdfSection("Core Expertise", buildExpertiseChips())}
+            ${buildPdfSection("Tools & Technologies", buildBulletList("#tools .skill-row"))}
+            ${buildPdfSection("Strengths", buildBulletList("#strengths .skill-row"))}
+            ${buildPdfSection("Work Experience", buildExperienceHtml())}
+            ${buildPdfSection("Education", buildEducationHtml())}
+          </div>
+
+          <div class="pdf-footer">© 2026 Ivan Kanev · Portfolio</div>
+        </div>
+      `;
+
+      pdfExportRoot.innerHTML = html;
+      return pdfExportRoot.firstElementChild;
+    }
+
+    async function waitForImages(root) {
+      const images = Array.from(root.querySelectorAll("img"));
+      await Promise.all(images.map((img) => {
+        if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+        return new Promise((resolve) => {
+          const done = () => resolve();
+          img.addEventListener("load", done, { once:true });
+          img.addEventListener("error", done, { once:true });
+        });
+      }));
     }
 
     async function exportPortfolioPdf() {
@@ -1689,12 +1889,12 @@
       downloadPdfBtn.textContent = "Preparing PDF...";
 
       try {
-        const clone = buildPdfClone();
-        await waitForImages(clone);
-        await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        const pdfNode = buildPdfMarkup();
+        await waitForImages(pdfNode);
+        await new Promise((resolve) => setTimeout(resolve, 250));
 
         const options = {
-          margin: [8, 8, 8, 8],
+          margin: 0,
           filename: "Ivan_Kanev_CV.pdf",
           image: { type: "jpeg", quality: 0.98 },
           html2canvas: {
@@ -1702,8 +1902,7 @@
             useCORS: true,
             backgroundColor: "#ffffff",
             scrollX: 0,
-            scrollY: 0,
-            windowWidth: 1280
+            scrollY: 0
           },
           jsPDF: {
             unit: "mm",
@@ -1715,12 +1914,12 @@
           }
         };
 
-        await html2pdf().set(options).from(clone).save();
+        await html2pdf().set(options).from(pdfNode).save();
       } catch (error) {
         console.error(error);
         alert("PDF export failed on this device. Please try again.");
       } finally {
-        pdfCloneMount.innerHTML = "";
+        pdfExportRoot.innerHTML = "";
         downloadPdfBtn.disabled = false;
         downloadPdfBtn.textContent = originalText;
       }
