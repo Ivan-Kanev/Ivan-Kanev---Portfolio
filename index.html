@@ -311,8 +311,14 @@
       display:grid;
       grid-template-columns:390px 1fr;
       gap:28px;
-      align-items:stretch;
+      align-items:start;
       margin-bottom:30px;
+    }
+
+    .hero-photo-stack{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
     }
 
     .hero-photo-card,
@@ -320,7 +326,8 @@
     .section-card,
     .timeline-item,
     .mini-card,
-    .stat-card{
+    .stat-card,
+    .cv-card{
       position:relative;
       overflow:hidden;
     }
@@ -330,7 +337,8 @@
     .section-card::before,
     .timeline-item::before,
     .mini-card::before,
-    .stat-card::before{
+    .stat-card::before,
+    .cv-card::before{
       content:"";
       position:absolute;
       inset:0;
@@ -397,6 +405,51 @@
       color:#dbe4ff;
       font-size:14px;
       line-height:1.65;
+    }
+
+    .cv-card{
+      border-radius:24px;
+      padding:18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      transition:
+        transform .3s var(--ease),
+        border-color .3s var(--ease),
+        background .3s var(--ease);
+    }
+
+    .cv-card:hover{
+      transform:translateY(-3px);
+      border-color:rgba(255,255,255,.14);
+      background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+    }
+
+    .cv-card-copy{
+      min-width:0;
+    }
+
+    .cv-card-kicker{
+      font-size:12px;
+      font-weight:750;
+      letter-spacing:.28px;
+      color:#dce4ff;
+      margin-bottom:4px;
+    }
+
+    .cv-card-title{
+      font-size:17px;
+      font-weight:760;
+      line-height:1.35;
+      color:var(--text);
+    }
+
+    .cv-card-subtitle{
+      margin-top:6px;
+      font-size:13px;
+      line-height:1.6;
+      color:var(--muted);
     }
 
     .hero-content{
@@ -477,12 +530,19 @@
         transform .28s var(--ease),
         box-shadow .28s var(--ease),
         background .28s var(--ease),
-        border-color .28s var(--ease);
+        border-color .28s var(--ease),
+        opacity .28s var(--ease);
       cursor:pointer;
+      white-space:nowrap;
     }
 
     .btn:hover{
       transform:translateY(-2px);
+    }
+
+    .btn:disabled{
+      opacity:.65;
+      cursor:not-allowed;
     }
 
     .btn-primary{
@@ -503,15 +563,10 @@
     }
 
     .btn-download{
-      color:var(--text);
-      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      border-color:rgba(255,255,255,.10);
-      box-shadow:0 12px 28px rgba(0,0,0,.18);
-    }
-
-    .btn-download:hover{
-      background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
-      border-color:rgba(255,255,255,.18);
+      color:#07111f;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      box-shadow:0 16px 36px rgba(83,228,199,.16);
+      min-width:160px;
     }
 
     .hero-stats{
@@ -870,6 +925,96 @@
       scroll-margin-top:110px;
     }
 
+    .pdf-export{
+      position:fixed;
+      left:-99999px;
+      top:0;
+      width:1000px;
+      background:#ffffff;
+      color:#101828;
+      padding:40px;
+      z-index:-1;
+    }
+
+    .pdf-sheet{
+      font-family:Arial, Helvetica, sans-serif;
+      color:#111827;
+    }
+
+    .pdf-header{
+      display:flex;
+      justify-content:space-between;
+      gap:24px;
+      border-bottom:2px solid #dbe3f0;
+      padding-bottom:18px;
+      margin-bottom:22px;
+    }
+
+    .pdf-name{
+      font-size:34px;
+      font-weight:800;
+      line-height:1.1;
+      margin-bottom:8px;
+    }
+
+    .pdf-role{
+      font-size:18px;
+      color:#334155;
+      line-height:1.4;
+    }
+
+    .pdf-contact{
+      font-size:14px;
+      line-height:1.7;
+      color:#334155;
+      text-align:right;
+    }
+
+    .pdf-grid{
+      display:grid;
+      grid-template-columns:1fr 1.25fr;
+      gap:28px;
+    }
+
+    .pdf-block{
+      margin-bottom:22px;
+    }
+
+    .pdf-block h3{
+      margin:0 0 10px;
+      font-size:16px;
+      text-transform:uppercase;
+      letter-spacing:.8px;
+      color:#1d4ed8;
+    }
+
+    .pdf-block p,
+    .pdf-block li{
+      font-size:14px;
+      line-height:1.7;
+      color:#1f2937;
+    }
+
+    .pdf-block ul{
+      margin:0;
+      padding-left:18px;
+    }
+
+    .pdf-chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .pdf-chip{
+      padding:6px 10px;
+      border:1px solid #dbe3f0;
+      border-radius:999px;
+      font-size:12px;
+      color:#334155;
+      background:#f8fbff;
+    }
+
     @media (max-width:1180px){
       .hero{
         grid-template-columns:1fr;
@@ -985,6 +1130,15 @@
       .brand-subtitle{
         white-space:normal;
       }
+
+      .cv-card{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .btn-download{
+        width:100%;
+      }
     }
 
     @media (max-width:560px){
@@ -1089,17 +1243,33 @@
 
   <main class="page" id="top">
     <section class="hero">
-      <div class="hero-photo-card surface reveal tilt">
-        <div class="photo-frame">
-          <img src="assets/Me.JPG" alt="Ivan Kanev portrait" />
-          <div class="photo-overlay">
-            <div class="photo-badge">Engineering Leadership · Validation · Innovation</div>
-            <div class="photo-meta">
-              Deep experience across silicon validation, DOE test structures, IC layout,
-              design enablement, and cross-functional execution between design, process,
-              manufacturing, and innovation teams.
+      <div class="hero-photo-stack">
+        <div class="hero-photo-card surface reveal tilt">
+          <div class="photo-frame">
+            <img src="assets/Me.JPG" alt="Ivan Kanev portrait" />
+            <div class="photo-overlay">
+              <div class="photo-badge">Engineering Leadership · Validation · Innovation</div>
+              <div class="photo-meta">
+                Deep experience across silicon validation, DOE test structures, IC layout,
+                design enablement, and cross-functional execution between design, process,
+                manufacturing, and innovation teams.
+              </div>
             </div>
           </div>
+        </div>
+
+        <div class="cv-card surface reveal">
+          <div class="cv-card-copy">
+            <div class="cv-card-kicker">Curriculum Vitae</div>
+            <div class="cv-card-title">Export this portfolio as PDF</div>
+            <div class="cv-card-subtitle">
+              The PDF is generated automatically from the current GitHub page content.
+            </div>
+          </div>
+
+          <button class="btn btn-download" id="downloadPdfBtn" type="button">
+            Download CV
+          </button>
         </div>
       </div>
 
@@ -1123,9 +1293,6 @@
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contact">Get in Touch</a>
           <a class="btn btn-secondary" href="#experience">View Experience</a>
-          <a class="btn btn-download" href="assets/Ivan_Kanev_CV.pdf" download>
-            Download CV (PDF)
-          </a>
         </div>
 
         <div class="hero-stats">
@@ -1354,6 +1521,97 @@
     </footer>
   </main>
 
+  <section class="pdf-export" id="pdfExportRoot" aria-hidden="true">
+    <div class="pdf-sheet">
+      <div class="pdf-header">
+        <div>
+          <div class="pdf-name">Ivan Kanev</div>
+          <div class="pdf-role">Principal Silicon Validation and Design Enablement Engineer</div>
+        </div>
+        <div class="pdf-contact">
+          <div>ikanev@icloud.com</div>
+          <div>+359 888 568 681</div>
+          <div>linkedin.com/in/ivan-kanev-332323131</div>
+          <div>researchgate.net/profile/Ivan-Kanev</div>
+        </div>
+      </div>
+
+      <div class="pdf-grid">
+        <div>
+          <div class="pdf-block">
+            <h3>About</h3>
+            <p>
+              Results-driven engineering professional with experience across silicon validation,
+              design enablement, IC layout, biomedical R&amp;D, and advanced technical analysis.
+              Strong in structured problem solving, technical documentation, collaboration,
+              and execution in international engineering environments. Also serving as a patent
+              advocate within GlobalFoundries, with involvement in more than 40 patents and trade secrets.
+            </p>
+          </div>
+
+          <div class="pdf-block">
+            <h3>Core Expertise</h3>
+            <div class="pdf-chips">
+              <span class="pdf-chip">DOE Electrical Test Structures</span>
+              <span class="pdf-chip">Silicon Validation</span>
+              <span class="pdf-chip">Data Analysis</span>
+              <span class="pdf-chip">FMEA</span>
+              <span class="pdf-chip">IC Layout Design</span>
+              <span class="pdf-chip">Design Rule Validation</span>
+              <span class="pdf-chip">Process Integration</span>
+              <span class="pdf-chip">Yield Engineering</span>
+              <span class="pdf-chip">Root Cause Analysis</span>
+              <span class="pdf-chip">Design Enablement</span>
+            </div>
+          </div>
+
+          <div class="pdf-block">
+            <h3>Tools &amp; Technologies</h3>
+            <ul>
+              <li>Cadence Virtuoso Schematic Editor &amp; Virtuoso Layout Suite</li>
+              <li>DRC, LVS, latch-up, ERC, BPC, antenna checks, mask difference</li>
+              <li>ESD / EMC / RF / MEMS / Hall related environments</li>
+              <li>Python, R, SKILL</li>
+              <li>Jira, Git, DesSync, SVN, CVS</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <div class="pdf-block">
+            <h3>Work Experience</h3>
+            <ul>
+              <li><strong>GlobalFoundries Ltd. — Principal Silicon Validation and Design Enablement Engineer (2021 – Present)</strong><br>Silicon validation, DOE test structure definition, process bring-up analysis, root-cause analysis, and cross-functional design/process/manufacturing collaboration.</li>
+              <li><strong>Melexis Bulgaria Ltd. — Analog IC Layout Design Engineer (2017 – 2021)</strong><br>Hierarchical schematic-to-layout implementation, DRC/LVS verification, floorplanning, and full-chip documentation.</li>
+              <li><strong>eSenseLab Ltd. — R&amp;D Biomedical Engineer (2016 – 2017)</strong><br>PCB layout and software testing for biomedical devices including ECG holters, defibrillators, sleep trackers, and monitoring systems.</li>
+            </ul>
+          </div>
+
+          <div class="pdf-block">
+            <h3>Education</h3>
+            <ul>
+              <li><strong>Ph.D., Technical University of Sofia (2018 – 2023)</strong><br>Profile: Medical Devices. Research focused on sonification of electrocardiographic signals for emergency patient telemetry applications.</li>
+              <li><strong>Master’s Degree, Technical University of Sofia (2016 – 2018)</strong><br>Biomedical Engineering.</li>
+              <li><strong>Bachelor’s Degree, Technical University of Sofia (2012 – 2016)</strong><br>Biomedical Engineering.</li>
+              <li><strong>Professional High School of Electronics John Atanasov (2008 – 2012)</strong><br>Electronics with microprocessor-oriented profile.</li>
+            </ul>
+          </div>
+
+          <div class="pdf-block">
+            <h3>Highlights</h3>
+            <ul>
+              <li>9+ years of engineering experience across validation, layout, and R&amp;D.</li>
+              <li>40+ patents and trade secrets supported through patent advocacy.</li>
+              <li>Ph.D. background in biomedical engineering and medical devices research.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
   <script>
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -1364,6 +1622,8 @@
     const tiltElements = document.querySelectorAll(".tilt");
     const navToggle = document.getElementById("navToggle");
     const navWrap = document.getElementById("navWrap");
+    const downloadPdfBtn = document.getElementById("downloadPdfBtn");
+    const pdfExportRoot = document.getElementById("pdfExportRoot");
 
     if (!prefersReducedMotion) {
       const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -1424,7 +1684,48 @@
       navToggle.setAttribute("aria-expanded", String(!isOpen));
     }
 
+    async function exportPortfolioPdf() {
+      if (typeof html2pdf === "undefined") {
+        alert("PDF export library failed to load.");
+        return;
+      }
+
+      const originalText = downloadPdfBtn.textContent;
+      downloadPdfBtn.disabled = true;
+      downloadPdfBtn.textContent = "Preparing PDF...";
+
+      const opt = {
+        margin: [10, 10, 10, 10],
+        filename: "Ivan_Kanev_CV.pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: "#ffffff"
+        },
+        jsPDF: {
+          unit: "mm",
+          format: "a4",
+          orientation: "portrait"
+        },
+        pagebreak: {
+          mode: ["avoid-all", "css", "legacy"]
+        }
+      };
+
+      try {
+        await html2pdf().set(opt).from(pdfExportRoot).save();
+      } catch (error) {
+        console.error(error);
+        alert("The PDF could not be generated on this device.");
+      } finally {
+        downloadPdfBtn.disabled = false;
+        downloadPdfBtn.textContent = originalText;
+      }
+    }
+
     navToggle.addEventListener("click", toggleMobileNav);
+    downloadPdfBtn.addEventListener("click", exportPortfolioPdf);
 
     navLinks.forEach((link) => {
       link.addEventListener("click", () => {
