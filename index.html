@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, viewport-fit=cover"
-  />
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Ivan Kanev | Portfolio</title>
-  <meta
-    name="description"
-    content="Ivan Kanev — Principal Silicon Validation and Design Enablement Engineer. Professional one-page portfolio."
-  />
+  <meta name="description" content="Ivan Kanev — Principal Silicon Validation and Design Enablement Engineer. Professional one-page portfolio.">
 
   <style>
     :root{
@@ -22,8 +14,6 @@
       --accent:#7c9cff;
       --accent-2:#53e4c7;
       --accent-3:#9474ff;
-      --success:#30d158;
-      --success-soft:rgba(48,209,88,.14);
       --shadow-xl:0 40px 120px rgba(0,0,0,.46);
       --shadow-md:0 18px 40px rgba(0,0,0,.24);
       --radius-xl:34px;
@@ -313,10 +303,7 @@
     .mini-card,
     .stat-card,
     .cv-card,
-    .photo-info-card,
-    .apps-section,
-    .status-banner,
-    .app-status-card{
+    .photo-info-card{
       position:relative;
       overflow:hidden;
       min-width:0;
@@ -329,10 +316,7 @@
     .mini-card::before,
     .stat-card::before,
     .cv-card::before,
-    .photo-info-card::before,
-    .apps-section::before,
-    .status-banner::before,
-    .app-status-card::before{
+    .photo-info-card::before{
       content:"";
       position:absolute;
       inset:0;
@@ -649,164 +633,6 @@
       border-color:rgba(255,255,255,.32);
     }
 
-    .apps-section{
-      border-radius:var(--radius-xl);
-      padding:28px;
-      margin-bottom:28px;
-    }
-
-    .status-banner{
-      border-radius:22px;
-      padding:18px 20px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
-      border:1px solid rgba(255,255,255,.08);
-      margin-bottom:22px;
-    }
-
-    .status-banner-left{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      min-width:0;
-    }
-
-    .status-dot{
-      width:14px;
-      height:14px;
-      border-radius:50%;
-      background:var(--success);
-      box-shadow:0 0 0 5px rgba(48,209,88,.14), 0 0 18px rgba(48,209,88,.55);
-      flex:0 0 auto;
-    }
-
-    .status-banner-title{
-      font-size:18px;
-      font-weight:760;
-      line-height:1.35;
-      color:var(--text);
-    }
-
-    .status-banner-subtitle{
-      margin-top:4px;
-      font-size:13px;
-      color:var(--muted);
-      line-height:1.6;
-    }
-
-    .status-pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:9px 12px;
-      border-radius:999px;
-      border:1px solid rgba(48,209,88,.28);
-      background:var(--success-soft);
-      color:#dfffea;
-      font-size:12px;
-      font-weight:750;
-      letter-spacing:.25px;
-      white-space:nowrap;
-    }
-
-    .apps-grid{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0,1fr));
-      gap:16px;
-    }
-
-    .app-status-card{
-      border-radius:22px;
-      padding:18px;
-      background:rgba(255,255,255,.045);
-      border:1px solid rgba(255,255,255,.08);
-      transition:transform .28s var(--ease), border-color .28s var(--ease), background .28s var(--ease);
-    }
-
-    .app-status-card:hover{
-      transform:translateY(-3px);
-      border-color:rgba(255,255,255,.14);
-      background:rgba(255,255,255,.06);
-    }
-
-    .app-status-top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:14px;
-      margin-bottom:12px;
-    }
-
-    .app-title-wrap{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:0;
-    }
-
-    .app-icon{
-      width:44px;
-      height:44px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      font-size:13px;
-      font-weight:800;
-      color:#08111f;
-      background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      box-shadow:0 10px 24px rgba(83,228,199,.14);
-      flex:0 0 auto;
-    }
-
-    .app-name{
-      font-size:17px;
-      font-weight:760;
-      line-height:1.3;
-      color:var(--text);
-    }
-
-    .app-type{
-      margin-top:3px;
-      font-size:12px;
-      color:var(--muted);
-      line-height:1.5;
-    }
-
-    .app-status{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid rgba(48,209,88,.24);
-      background:rgba(48,209,88,.12);
-      color:#dfffea;
-      font-size:11px;
-      font-weight:750;
-      white-space:nowrap;
-      flex:0 0 auto;
-    }
-
-    .app-status::before{
-      content:"";
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:var(--success);
-      box-shadow:0 0 10px rgba(48,209,88,.55);
-      flex:0 0 auto;
-    }
-
-    .app-description{
-      margin:0;
-      color:#d7def4;
-      font-size:14px;
-      line-height:1.7;
-    }
-
     .content-grid{
       display:grid;
       grid-template-columns:1.02fr 1.48fr;
@@ -1058,6 +884,239 @@
       scroll-margin-top:110px;
     }
 
+    #pdfExportRoot{
+      position:fixed;
+      left:-99999px;
+      top:0;
+      width:210mm;
+      background:#fff;
+      color:#111827;
+      z-index:-1;
+      opacity:0;
+      pointer-events:none;
+    }
+
+    .pdf-sheet{
+      width:210mm;
+      min-height:297mm;
+      padding:16mm;
+      background:#fff;
+      color:#111827;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    .pdf-header{
+      display:grid;
+      grid-template-columns:42mm 1fr;
+      gap:10mm;
+      align-items:start;
+      border-bottom:1px solid #dbe3f0;
+      padding-bottom:8mm;
+      margin-bottom:8mm;
+    }
+
+    .pdf-photo{
+      width:42mm;
+      height:52mm;
+      border:1px solid #dbe3f0;
+      border-radius:4mm;
+      overflow:hidden;
+      background:#f8fafc;
+    }
+
+    .pdf-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .pdf-name{
+      font-size:24pt;
+      font-weight:800;
+      line-height:1.02;
+      letter-spacing:-.5px;
+      color:#0f172a;
+      margin:0 0 3mm;
+    }
+
+    .pdf-role{
+      font-size:12.5pt;
+      line-height:1.35;
+      color:#334155;
+      font-weight:700;
+      margin-bottom:5mm;
+    }
+
+    .pdf-summary{
+      font-size:10.5pt;
+      line-height:1.65;
+      color:#334155;
+      margin:0;
+    }
+
+    .pdf-contact-row{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:4mm;
+      margin-top:6mm;
+    }
+
+    .pdf-contact-item{
+      border:1px solid #dbe3f0;
+      border-radius:4mm;
+      padding:3.5mm 4mm;
+      min-width:0;
+    }
+
+    .pdf-contact-label{
+      font-size:8pt;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      color:#64748b;
+      margin-bottom:2mm;
+      font-weight:700;
+    }
+
+    .pdf-contact-value{
+      font-size:9.5pt;
+      line-height:1.55;
+      color:#1f2937;
+      overflow-wrap:anywhere;
+      word-break:break-word;
+    }
+
+    .pdf-stats{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:4mm;
+      margin-top:6mm;
+    }
+
+    .pdf-stat{
+      border:1px solid #dbe3f0;
+      border-radius:4mm;
+      padding:4mm;
+    }
+
+    .pdf-stat-number{
+      font-size:16pt;
+      font-weight:800;
+      color:#0f172a;
+      margin-bottom:2mm;
+    }
+
+    .pdf-stat-label{
+      font-size:9pt;
+      line-height:1.5;
+      color:#475569;
+    }
+
+    .pdf-main{
+      margin-top:8mm;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:7mm;
+    }
+
+    .pdf-section{
+      border:1px solid #dbe3f0;
+      border-radius:5mm;
+      padding:5mm;
+      page-break-inside:avoid;
+      break-inside:avoid;
+    }
+
+    .pdf-section-title{
+      margin:0 0 4mm;
+      font-size:15pt;
+      line-height:1.2;
+      color:#0f172a;
+      font-weight:800;
+    }
+
+    .pdf-paragraph{
+      margin:0;
+      font-size:10.3pt;
+      line-height:1.7;
+      color:#334155;
+    }
+
+    .pdf-chip-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:2.5mm;
+    }
+
+    .pdf-chip{
+      border:1px solid #dbe3f0;
+      border-radius:999px;
+      padding:1.8mm 3mm;
+      font-size:8.6pt;
+      line-height:1.2;
+      color:#334155;
+      background:#f8fbff;
+      page-break-inside:avoid;
+    }
+
+    .pdf-bullets{
+      margin:0;
+      padding-left:5mm;
+      color:#334155;
+    }
+
+    .pdf-bullets li{
+      font-size:10pt;
+      line-height:1.7;
+      margin:0;
+    }
+
+    .pdf-bullets li + li{
+      margin-top:1.6mm;
+    }
+
+    .pdf-job,
+    .pdf-edu{
+      border-top:1px solid #e7edf5;
+      padding-top:4mm;
+      margin-top:4mm;
+      page-break-inside:avoid;
+      break-inside:avoid;
+    }
+
+    .pdf-job:first-child,
+    .pdf-edu:first-child{
+      border-top:none;
+      padding-top:0;
+      margin-top:0;
+    }
+
+    .pdf-job-title,
+    .pdf-edu-title{
+      font-size:12.5pt;
+      line-height:1.35;
+      color:#0f172a;
+      font-weight:800;
+      margin:0;
+    }
+
+    .pdf-job-meta{
+      margin-top:1.6mm;
+      font-size:10pt;
+      color:#475569;
+      font-weight:700;
+    }
+
+    .pdf-job-company{
+      color:#1e293b;
+    }
+
+    .pdf-footer{
+      margin-top:8mm;
+      text-align:center;
+      font-size:9pt;
+      color:#64748b;
+    }
+
     @media (max-width:1100px) and (min-width:821px){
       .page{
         padding:28px 20px 72px;
@@ -1076,8 +1135,7 @@
       .hero-photo-card,
       .hero-content,
       .section-card,
-      .timeline-item,
-      .apps-section{
+      .timeline-item{
         padding:20px;
       }
 
@@ -1102,10 +1160,6 @@
       .hero-stats{
         grid-template-columns:repeat(3, minmax(0,1fr));
         gap:10px;
-      }
-
-      .apps-grid{
-        grid-template-columns:repeat(2, minmax(0,1fr));
       }
 
       .stat-card{
@@ -1171,7 +1225,7 @@
       }
 
       .nav-wrap.open{
-        max-height:380px;
+        max-height:320px;
         opacity:1;
       }
 
@@ -1197,8 +1251,7 @@
       .hero-content,
       .hero-photo-card,
       .section-card,
-      .timeline-item,
-      .apps-section{
+      .timeline-item{
         padding:22px;
       }
 
@@ -1236,21 +1289,8 @@
       }
 
       .hero-stats,
-      .hero-meta,
-      .apps-grid,
-      .pdf-contact-row,
-      .pdf-stats{
+      .hero-meta{
         grid-template-columns:1fr;
-      }
-
-      .status-banner{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      .app-status-top{
-        flex-direction:column;
-        align-items:flex-start;
       }
 
       .section-heading{
@@ -1295,8 +1335,7 @@
       .section-card,
       .timeline-item,
       .hero-content,
-      .hero-photo-card,
-      .apps-section{
+      .hero-photo-card{
         border-radius:24px;
       }
 
@@ -1332,7 +1371,7 @@
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true">
-    <div class="scroll-progress-bar" id="scrollProgress"></div>
+    <div class="scroll-progress-bar" id="scrollProgress" style="width: 0%;"></div>
   </div>
 
   <div class="ambient-particles" aria-hidden="true">
@@ -1357,7 +1396,6 @@
         <nav id="mainNav">
           <a href="#about" class="nav-link">About</a>
           <a href="#expertise" class="nav-link">Expertise</a>
-          <a href="#apps" class="nav-link">Apps</a>
           <a href="#experience" class="nav-link">Experience</a>
           <a href="#education" class="nav-link">Education</a>
           <a href="#contact" class="nav-link">Contact</a>
@@ -1369,13 +1407,13 @@
   <main class="page" id="top">
     <section class="hero">
       <div class="hero-photo-stack">
-        <div class="hero-photo-card surface reveal tilt">
+        <div class="hero-photo-card surface reveal tilt active">
           <div class="photo-frame">
-            <img id="profileImage" src="assets/Me.JPG" alt="Ivan Kanev portrait" />
+            <img id="profileImage" src="assets/Me.JPG" alt="Ivan Kanev portrait">
           </div>
         </div>
 
-        <div class="photo-info-card surface reveal">
+        <div class="photo-info-card surface reveal active">
           <div class="photo-info-badge">Engineering Leadership · Validation · Innovation</div>
           <div class="photo-info-text">
             Deep experience across silicon validation, DOE test structures, IC layout,
@@ -1401,10 +1439,10 @@
         </div>
       </div>
 
-      <div class="hero-content surface reveal tilt">
+      <div class="hero-content surface reveal tilt active">
         <div class="eyebrow">Portfolio</div>
 
-        <h1 id="pdfName">IVAN<br />KANEV</h1>
+        <h1 id="pdfName">IVAN<br>KANEV</h1>
 
         <div class="hero-subtitle" id="pdfRole">
           Principal Silicon Validation and Design Enablement Engineer
@@ -1476,156 +1514,6 @@
       </div>
     </section>
 
-    <section class="apps-section surface reveal anchor-offset" id="apps">
-      <div class="section-heading">
-        <h2 class="section-title">iOS Apps & Status</h2>
-        <div class="section-kicker">Apple-style Monitoring</div>
-      </div>
-
-      <div class="status-banner">
-        <div class="status-banner-left">
-          <div class="status-dot"></div>
-          <div>
-            <div class="status-banner-title">All listed iOS app projects are operating normally.</div>
-            <div class="status-banner-subtitle">
-              Independent iOS development portfolio with active maintenance, iteration, and ongoing product refinement.
-            </div>
-          </div>
-        </div>
-        <div class="status-pill">All Systems Normal</div>
-      </div>
-
-      <div class="apps-grid">
-        <article class="app-status-card">
-          <div class="app-status-top">
-            <div class="app-title-wrap">
-              <div class="app-icon">VY</div>
-              <div>
-                <div class="app-name">VideoY</div>
-                <div class="app-type">iOS app project</div>
-              </div>
-            </div>
-            <div class="app-status">Operational</div>
-          </div>
-          <p class="app-description">
-            Video-focused iOS app project with active iteration on product experience, workflow clarity, and visual polish.
-          </p>
-        </article>
-
-        <article class="app-status-card">
-          <div class="app-status-top">
-            <div class="app-title-wrap">
-              <div class="app-icon">AC</div>
-              <div>
-                <div class="app-name">AvoCue</div>
-                <div class="app-type">iOS app project</div>
-              </div>
-            </div>
-            <div class="app-status">Operational</div>
-          </div>
-          <p class="app-description">
-            Independent iOS application concept under active development, focused on usability, responsiveness, and clean interaction flows.
-          </p>
-        </article>
-
-        <article class="app-status-card">
-          <div class="app-status-top">
-            <div class="app-title-wrap">
-              <div class="app-icon">SA</div>
-              <div>
-                <div class="app-name">SwitchAir</div>
-                <div class="app-type">iOS app project</div>
-              </div>
-            </div>
-            <div class="app-status">Operational</div>
-          </div>
-          <p class="app-description">
-            Utility-style iOS project with ongoing refinement of navigation structure, status handling, and streamlined user journeys.
-          </p>
-        </article>
-
-        <article class="app-status-card">
-          <div class="app-status-top">
-            <div class="app-title-wrap">
-              <div class="app-icon">BF</div>
-              <div>
-                <div class="app-name">BudgetFlowStudio</div>
-                <div class="app-type">Finance iOS app</div>
-              </div>
-            </div>
-            <div class="app-status">Operational</div>
-          </div>
-          <p class="app-description">
-            Budget and finance-focused iOS application with emphasis on clarity, trend visualization, and polished analytics presentation.
-          </p>
-        </article>
-
-        <article class="app-status-card">
-          <div class="app-status-top">
-            <div class="app-title-wrap">
-              <div class="app-icon">UP</div>
-              <div>
-                <div class="app-name">UProxi</div>
-                <div class="app-type">iOS app project</div>
-              </div>
-            </div>
-            <div class="app-status">Operational</div>
-          </div>
-          <p class="app-description">
-            Independent iOS project with active maintenance around core interactions, stability, and product-level user experience.
-          </p>
-        </article>
-
-        <article class="app-status-card">
-          <div class="app-status-top">
-            <div class="app-title-wrap">
-              <div class="app-icon">UC</div>
-              <div>
-                <div class="app-name">UCircuit</div>
-                <div class="app-type">Engineering iOS app</div>
-              </div>
-            </div>
-            <div class="app-status">Operational</div>
-          </div>
-          <p class="app-description">
-            Circuit- and engineering-oriented iOS application concept with focus on technical utility, clean structure, and fast interaction.
-          </p>
-        </article>
-
-        <article class="app-status-card">
-          <div class="app-status-top">
-            <div class="app-title-wrap">
-              <div class="app-icon">GB</div>
-              <div>
-                <div class="app-name">GitBudgetStudio</div>
-                <div class="app-type">Finance iOS app</div>
-              </div>
-            </div>
-            <div class="app-status">Operational</div>
-          </div>
-          <p class="app-description">
-            Advanced personal finance iOS product with analytics, budgeting flows, and continuous iteration on usability and insight design.
-          </p>
-        </article>
-
-        <article class="app-status-card">
-          <div class="app-status-top">
-            <div class="app-title-wrap">
-              <div class="app-icon">CL</div>
-              <div>
-                <div class="app-name">CircuitLab Designer</div>
-                <div class="app-type">Engineering iOS app</div>
-              </div>
-            </div>
-            <div class="app-status">Operational</div>
-          </div>
-          <p class="app-description">
-            Design-oriented engineering app project with emphasis on structured workflows, technical clarity, and scalable UI organization.
-          </p>
-        </article>
-      </div>
-    </section>
-
     <section class="content-grid">
       <div class="left-col">
         <section class="section-card surface reveal tilt anchor-offset" id="about">
@@ -1638,7 +1526,7 @@
             Results-driven engineering professional with experience across silicon validation,
             design enablement, IC layout, biomedical R&amp;D, and advanced technical analysis.
             Strong in structured problem solving, technical documentation, collaboration,
-            and execution in international engineering environments. In parallel, I develop independent iOS applications with strong focus on product design, usability, analytics, and polished user experience. Also serving as a patent
+            and execution in international engineering environments. Also serving as a patent
             advocate within GlobalFoundries, with involvement in more than 40 patents and trade secrets.
           </p>
         </section>
@@ -1660,8 +1548,6 @@
             <div class="chip">Yield Engineering</div>
             <div class="chip">Root Cause Analysis</div>
             <div class="chip">Design Enablement</div>
-            <div class="chip">iOS App Development</div>
-            <div class="chip">Product UX / UI Refinement</div>
             <div class="chip">PDK / Process Flow Robustness</div>
             <div class="chip">Cross-Functional Engineering</div>
           </div>
@@ -1678,7 +1564,6 @@
             <div class="skill-row"><span class="dot"></span><span>DRC, LVS, latch-up, ERC, BPC, antenna checks, mask difference</span></div>
             <div class="skill-row"><span class="dot"></span><span>ESD / EMC / RF / MEMS / Hall related environments</span></div>
             <div class="skill-row"><span class="dot"></span><span>Python, R, SKILL</span></div>
-            <div class="skill-row"><span class="dot"></span><span>SwiftUI, iOS product development, UI polish, analytics-driven iteration</span></div>
             <div class="skill-row"><span class="dot"></span><span>Jira, Git, DesSync, SVN, CVS</span></div>
             <div class="skill-row"><span class="dot"></span><span>Agile / Scrum based engineering workflows</span></div>
           </div>
@@ -1812,7 +1697,7 @@
     const revealElements = document.querySelectorAll(".reveal");
     const progressBar = document.getElementById("scrollProgress");
     const navLinks = document.querySelectorAll(".nav-link");
-    const sections = document.querySelectorAll("#about, #expertise, #apps, #experience, #education, #contact");
+    const sections = document.querySelectorAll("#about, #expertise, #experience, #education, #contact");
     const tiltElements = document.querySelectorAll(".tilt");
     const navToggle = document.getElementById("navToggle");
     const navWrap = document.getElementById("navWrap");
@@ -1897,16 +1782,6 @@
         .map(chip => `<span class="pdf-chip">${chip.innerText.trim()}</span>`)
         .join("");
       return `<div class="pdf-chip-list">${chips}</div>`;
-    }
-
-    function buildAppsStatusHtml() {
-      const apps = [...document.querySelectorAll(".app-status-card")].map((card) => {
-        const name = card.querySelector(".app-name")?.innerText.trim() || "";
-        const desc = card.querySelector(".app-description")?.innerText.trim() || "";
-        return `<li><strong>${name}</strong> — ${desc}</li>`;
-      }).join("");
-
-      return `<ul class="pdf-bullets">${apps}</ul>`;
     }
 
     function buildBulletList(selector) {
@@ -2011,7 +1886,6 @@
           <div class="pdf-main">
             ${buildPdfSection("About", `<p class="pdf-paragraph">${about}</p>`)}
             ${buildPdfSection("Core Expertise", buildExpertiseChips())}
-            ${buildPdfSection("iOS Apps & Status", buildAppsStatusHtml())}
             ${buildPdfSection("Tools & Technologies", buildBulletList("#tools .skill-row"))}
             ${buildPdfSection("Strengths", buildBulletList("#strengths .skill-row"))}
             ${buildPdfSection("Work Experience", buildExperienceHtml())}
@@ -2151,5 +2025,6 @@
 
     window.addEventListener("load", handleScroll);
   </script>
-</body>
-</html>
+
+
+</body></html>
